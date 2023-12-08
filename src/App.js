@@ -24,6 +24,11 @@ function App() {
     setJoined(!joined);
   };
 
+  const [curCat, setCurCat] = useState("All");
+  const changeCat = (name) => {
+    setCurCat(name);
+  };
+
   return (
     <div>
       <Backdrop state={open} func={toggle}></Backdrop>
@@ -34,8 +39,8 @@ function App() {
       )}
       <Navbar func={toggle}></Navbar>
       <GroupHead state={joined} func={tog}></GroupHead>
-      <Categories state={joined} func={tog}></Categories>
-      <PostPane state={joined}></PostPane>
+      <Categories cat={changeCat} state={joined} func={tog}></Categories>
+      <PostPane current={curCat} state={joined}></PostPane>
       <PostBtn func={toggle}></PostBtn>
     </div>
   );

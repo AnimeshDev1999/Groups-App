@@ -4,6 +4,12 @@ const Categories = (props) => {
   const [cate, setCate] = useState("All");
   const switchCat = (e) => {
     setCate(e.target.name);
+    props.cat(e.target.name);
+  };
+
+  const switchCatMob = (e) => {
+    setCate(e.target.value);
+    props.cat(e.target.value);
   };
 
   return (
@@ -21,22 +27,22 @@ const Categories = (props) => {
         </button>
         <button
           onClick={switchCat}
-          name="Art"
-          className={cate === "Art" ? "cat-btn cat-active" : "cat-btn"}
+          name="Article"
+          className={cate === "Article" ? "cat-btn cat-active" : "cat-btn"}
         >
           Article
         </button>
         <button
           onClick={switchCat}
-          name="Evn"
-          className={cate === "Evn" ? "cat-btn cat-active" : "cat-btn"}
+          name="Event"
+          className={cate === "Event" ? "cat-btn cat-active" : "cat-btn"}
         >
           Event
         </button>
         <button
           onClick={switchCat}
-          name="Edu"
-          className={cate === "Edu" ? "cat-btn cat-active" : "cat-btn"}
+          name="Education"
+          className={cate === "Education" ? "cat-btn cat-active" : "cat-btn"}
         >
           Education
         </button>
@@ -63,11 +69,21 @@ const Categories = (props) => {
           {props.state ? "Leave Group" : "Join Group"}
         </button>
         <select className="bg-[#F1F3F5] px-2 py-1 rounded-md lg:hidden">
-          <option value="">All</option>
-          <option value="">Article</option>
-          <option value="">Event</option>
-          <option value="">Education</option>
-          <option value="">Job</option>
+          <option onClick={switchCatMob} value="All">
+            All
+          </option>
+          <option onClick={switchCatMob} value="Article">
+            Article
+          </option>
+          <option onClick={switchCatMob} value="Event">
+            Event
+          </option>
+          <option onClick={switchCatMob} value="Education">
+            Education
+          </option>
+          <option onClick={switchCatMob} value="Job">
+            Job
+          </option>
         </select>
       </div>
     </div>

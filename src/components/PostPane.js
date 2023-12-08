@@ -81,12 +81,24 @@ const PostPane = (props) => {
     <div className="grid grid-cols-1 xl:grid-cols-[3fr,1fr] xl:gap-16 xl:px-36">
       <div className="flex flex-col justify-center gap-3 xl:self-start xl:gap-8 py-2 max-w-[1280px] mx-auto self-start">
         {data.map((item) =>
-          item.cat === "Article" ? (
-            <JobEdu dat={item}></JobEdu>
-          ) : item.cat === "Event" ? (
-            <Event dat={item}></Event>
+          item.cat === props.current ? (
+            item.cat === "Article" ? (
+              <JobEdu dat={item}></JobEdu>
+            ) : item.cat === "Event" ? (
+              <Event dat={item}></Event>
+            ) : (
+              <Job dat={item}></Job>
+            )
+          ) : props.current === "All" ? (
+            item.cat === "Article" ? (
+              <JobEdu dat={item}></JobEdu>
+            ) : item.cat === "Event" ? (
+              <Event dat={item}></Event>
+            ) : (
+              <Job dat={item}></Job>
+            )
           ) : (
-            <Job dat={item}></Job>
+            ""
           )
         )}
       </div>
